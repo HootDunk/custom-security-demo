@@ -1,0 +1,16 @@
+micronaut:
+  application:
+    name: server
+
+datasources:
+  default:
+    url: ${JDBC_URL}
+    username: ${JDBC_USER}
+    password: ${JDBC_PASSWORD}
+    driverClassName: ${JDBC_DRIVER}
+
+
+flyway:
+  datasources:
+    default:
+      locations: "classpath:db/migration"
