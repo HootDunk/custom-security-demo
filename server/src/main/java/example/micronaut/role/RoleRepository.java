@@ -12,4 +12,7 @@ import java.util.UUID;
 @Join(value = "permissions", type = Join.Type.FETCH)
 public interface RoleRepository extends CrudRepository<Role, UUID> {
     List<Role> findAll();
+
+    // searchByMemberId
+        // write query to handle that
 }

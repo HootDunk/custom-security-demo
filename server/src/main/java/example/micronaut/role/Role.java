@@ -28,7 +28,7 @@ public class Role {
     @Column(name = "description")
     private String description;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "role_permissions",
             joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},

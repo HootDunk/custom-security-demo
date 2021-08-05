@@ -1,5 +1,6 @@
 package example.micronaut.member_profile;
 
+import example.micronaut.permission.Permission;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -26,4 +27,11 @@ public class MemberProfileContoller {
     public HttpResponse<MemberProfile> getOne(@PathVariable UUID id) {
         return HttpResponse.ok(memberProfileRepository.findById(id).orElse(null));
     }
+
+
+
+//    @Get("/permissions/{id}")
+//    public HttpResponse<List<Permission>> findUserPermissions(@PathVariable UUID id) {
+//        return HttpResponse.ok(memberProfileRepository.findUserPermissions(id).orElse(null));
+//    }
 }

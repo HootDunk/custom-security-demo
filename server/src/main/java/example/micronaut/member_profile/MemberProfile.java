@@ -29,13 +29,14 @@ public class MemberProfile {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name= "member_roles",
             joinColumns = {@JoinColumn(name = "member_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
     private List<Role> roles;
+
 
     public List<Role> getRoles() {
         return roles;
@@ -67,5 +68,18 @@ public class MemberProfile {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MemberProfile that = (MemberProfile) o;
+        return Objects.equals(id, that.id) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(roles, that.roles);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, roles);
     }
 }

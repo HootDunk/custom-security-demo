@@ -40,8 +40,7 @@ JOIN member_roles
 JOIN roles
     ON roles.id = member_roles.role_id;
     
-    
-
+   
     
 SELECT roles.role, permissions.permission
 FROM roles
@@ -51,7 +50,9 @@ JOIN permissions
     ON permissions.id = role_permissions.permission_id;
     
     
-SELECT member_profile.first_name, member_profile.last_name, permissions.permission
+    
+    
+SELECT DISTINCT member_profile.first_name, permissions.id, permissions.permission
 FROM member_profile
 JOIN member_roles
     ON member_profile.id = member_roles.member_id
@@ -60,7 +61,11 @@ JOIN roles
 JOIN role_permissions
     ON roles.id = role_permissions.role_id
 JOIN permissions
-    ON permissions.id = role_permissions.permission_id;]]></console>
+    ON permissions.id = role_permissions.permission_id
+WHERE member_profile.id = '7a6a2d4e-e435-4ec9-94d8-f1ed7c779498';
+
+
+SELECT * from member_profile;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
@@ -70,7 +75,9 @@ JOIN permissions
     <connection id="c1b4f551-246a-480d-b994-78fb1e326529" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="c1b4f551-246a-480d-b994-78fb1e326529" dataset="public.permissions" active-filter-id="" />
     <filter-actions connection-id="c1b4f551-246a-480d-b994-78fb1e326529" dataset="public.member_roles" active-filter-id="" />
+    <filter-actions connection-id="c1b4f551-246a-480d-b994-78fb1e326529" dataset="public.roles" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
