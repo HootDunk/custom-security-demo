@@ -7,6 +7,7 @@ import io.micronaut.data.jdbc.annotation.JdbcRepository;
 import io.micronaut.data.model.query.builder.sql.Dialect;
 import io.micronaut.data.repository.CrudRepository;
 
+import java.lang.reflect.Member;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -15,8 +16,10 @@ import java.util.UUID;
 @Join(value = "roles", type = Join.Type.FETCH)
 public interface MemberProfileRepository extends CrudRepository<MemberProfile, UUID> {
     List<MemberProfile> findAll();
-    // this join annotation allows us to fetch the roles associated when accessing the MemberProfile entity
+
     Optional<MemberProfile> findById(UUID id);
+
+    Optional<MemberProfile> findByWorkEmail(String email);
 
 //    @Query("SELECT DISTINCT permissions.id, permissions.permission " +
 //            "FROM member_profile " +

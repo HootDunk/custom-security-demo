@@ -2,28 +2,30 @@ DROP TABLE if EXISTS member_profile;
 CREATE TABLE member_profile(
     id varchar PRIMARY KEY,
     first_name varchar,
-    last_name varchar
+    last_name varchar,
+    work_email varchar,
+    password varchar
 );
 
 insert into member_profile
-    (id, first_name, last_name)
+    (id, first_name, last_name, work_email, password)
 values
-    ('01b7d769-9fa2-43ff-95c7-f3b950a27bf9','Josh', 'Hootman');
+    ('01b7d769-9fa2-43ff-95c7-f3b950a27bf9','Josh', 'Hootman', 'hootmanj@objectcomputing.com', '1234');
 
 insert into member_profile
-    (id, first_name, last_name)
+    (id, first_name, last_name, work_email, password)
 values
-    ('2559a257-ae84-4076-9ed4-3820c427beeb','Zach', 'Brown');
+    ('2559a257-ae84-4076-9ed4-3820c427beeb','Zach', 'Brown', 'brownz@objectcomputing.com', '1234');
 
 insert into member_profile
-    (id, first_name, last_name)
+    (id, first_name, last_name, work_email, password)
 values
-    ('802cb1f5-a255-4236-8719-773fa53d79d9','Mohit', 'Bhatia');
+    ('802cb1f5-a255-4236-8719-773fa53d79d9','Mohit', 'Bhatia', 'bhatiam@objectcomputing.com', '1234');
 
 insert into member_profile
-    (id, first_name, last_name)
+    (id, first_name, last_name, work_email, password)
 values
-    ('7a6a2d4e-e435-4ec9-94d8-f1ed7c779498','Jesse', 'Hanner');
+    ('7a6a2d4e-e435-4ec9-94d8-f1ed7c779498','Jesse', 'Hanner', 'hannerj@objectcomputing.com', '1234');
 
 drop table if exists roles;
 CREATE TABLE roles(

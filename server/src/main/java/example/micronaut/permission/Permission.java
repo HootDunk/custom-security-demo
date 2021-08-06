@@ -1,6 +1,8 @@
 package example.micronaut.permission;
 
+import io.micronaut.core.annotation.Introspected;
 import io.micronaut.data.annotation.AutoPopulated;
+import io.micronaut.data.annotation.MappedEntity;
 import io.micronaut.data.annotation.TypeDef;
 import io.micronaut.data.model.DataType;
 
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import java.util.UUID;
+
 
 @Entity
 @Table(name = "permissions")

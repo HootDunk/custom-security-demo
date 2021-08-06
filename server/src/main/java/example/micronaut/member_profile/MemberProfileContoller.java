@@ -5,10 +5,13 @@ import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.micronaut.http.annotation.PathVariable;
+import io.micronaut.security.annotation.Secured;
+import io.micronaut.security.rules.SecurityRule;
 
 import java.util.List;
 import java.util.UUID;
 
+@Secured(SecurityRule.IS_ANONYMOUS)
 @Controller("/member-profile")
 public class MemberProfileContoller {
 

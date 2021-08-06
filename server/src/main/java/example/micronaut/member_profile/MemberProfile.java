@@ -1,5 +1,6 @@
 package example.micronaut.member_profile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import example.micronaut.role.Role;
 import io.micronaut.data.annotation.AutoPopulated;
 import io.micronaut.data.annotation.MappedEntity;
@@ -28,6 +29,16 @@ public class MemberProfile {
     @NotBlank
     @Column(name = "last_name")
     private String lastName;
+
+    @NotBlank
+    @Column(name = "work_email")
+    private String workEmail;
+
+
+    @NotBlank
+    @Column(name = "password")
+    @JsonIgnore
+    private String password;
 
     @OneToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -68,6 +79,22 @@ public class MemberProfile {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getWorkEmail() {
+        return workEmail;
+    }
+
+    public void setWorkEmail(String workEmail) {
+        this.workEmail = workEmail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
