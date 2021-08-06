@@ -26,5 +26,4 @@ public interface PermissionRepository extends CrudRepository<Permission, UUID> {
             "WHERE member_profile.id = :id")
     List<Permission> findUserPermissions(UUID id);
 
-    // write query to load permissions by memberid
 }
