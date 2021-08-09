@@ -4,6 +4,9 @@ micronaut:
   security:
     authentication: bearer
     token:
+      # not sure if this should be left in or not
+#      roles-name: "permissions"
+#      name-key: "email"
       jwt:
         signatures:
           secret:

@@ -1,5 +1,6 @@
 package example.micronaut.permission;
 
+import example.micronaut.security.RequiredPermission;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -10,7 +11,7 @@ import io.micronaut.security.rules.SecurityRule;
 import java.util.List;
 import java.util.UUID;
 
-@Secured(SecurityRule.IS_ANONYMOUS)
+@Secured("isAuthenticated()")
 @Controller("/permissions")
 public class PermissionController {
 

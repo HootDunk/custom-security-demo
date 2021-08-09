@@ -1,6 +1,7 @@
 package example.micronaut.member_profile;
 
 import example.micronaut.permission.Permission;
+import example.micronaut.security.RequiredPermission;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
@@ -21,6 +22,7 @@ public class MemberProfileContoller {
         this.memberProfileRepository = memberProfileRepository;
     }
 
+    @RequiredPermission(permission = "Can View Organization Members")
     @Get
     public HttpResponse<List<MemberProfile>> getAll() {
         return HttpResponse.ok(memberProfileRepository.findAll());

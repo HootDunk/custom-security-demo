@@ -5,6 +5,7 @@ import example.micronaut.member_profile.MemberProfile;
 import example.micronaut.member_profile.MemberProfileRepository;
 
 import example.micronaut.permission.Permission;
+import example.micronaut.permission.PermissionDTO;
 import example.micronaut.permission.PermissionRepository;
 import io.micronaut.core.annotation.Nullable;
 import io.micronaut.http.HttpRequest;
@@ -39,11 +40,8 @@ public class UserPasswordAuthProvider implements AuthenticationProvider {
             throw new NotFoundException(("Password does not match"));
         }
 
-        List<Permission> permissions = permissionRepository.findUserPermissions(memberProfile.getId());
-        // everything works here
-//        permissions.forEach(permission -> System.out.println(permission.getId() + " " + permission.getPermission()));
+        List<PermissionDTO> permissions = permissionRepository.findUserPermissionsDTO(memberProfile.getId());
         String email = authReq.getIdentity().toString();
-        // but permission id's are not included in jwt ?
         return Flowable.just(new ExtendedUserDetails(email, new ArrayList<>(), permissions));
 
 

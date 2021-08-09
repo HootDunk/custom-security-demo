@@ -1,0 +1,54 @@
+package example.micronaut.security;
+
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import example.micronaut.permission.Permission;
+import io.micronaut.core.annotation.AnnotationValue;
+import io.micronaut.core.annotation.Nullable;
+import io.micronaut.http.HttpRequest;
+import io.micronaut.security.rules.SecuredAnnotationRule;
+import io.micronaut.security.rules.SecurityRule;
+import io.micronaut.security.rules.SecurityRuleResult;
+import io.micronaut.web.router.MethodBasedRouteMatch;
+import io.micronaut.web.router.RouteMatch;
+
+import javax.inject.Singleton;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+@Singleton
+public class PermissionSecurityRole implements SecurityRule {
+
+    public static final Integer ORDER = SecuredAnnotationRule.ORDER - 100;
+
+    public int getOrder() {
+        return ORDER;
+    }
+
+    @Override
+    public SecurityRuleResult check(HttpRequest<?> request, @Nullable RouteMatch<?> routeMatch, @Nullable  Map<String, Object> claims){
+        if (routeMatch instanceof MethodBasedRouteMatch){
+            MethodBasedRouteMatch methodBasedRouteMatch = (MethodBasedRouteMatch) routeMatch;
+            if (methodBasedRouteMatch.hasAnnotation(RequiredPermission.class)) {
+                AnnotationValue<RequiredPermission> requiredPermissionAnnotation = methodBasedRouteMatch.getAnnotation(RequiredPermission.class);
+                Optional<String> optionalPermission = requiredPermissionAnnotation.stringValue("permission");
+                if (optionalPermission.isPresent() && claims != null){
+                    String requiredPermission = requiredPermissionAnnotation.stringValue("permission").get();
+                    System.out.println("required permission -> " + requiredPermission);
+                    String userPermissions = claims.get("permissions").toString();
+                    System.out.println("userPermissions = " + userPermissions);
+                    System.out.println("user can access resource = " + userPermissions.contains(requiredPermission));
+                    if (userPermissions.contains(requiredPermission)){
+                        return SecurityRuleResult.ALLOWED;
+                    }
+                    else return SecurityRuleResult.REJECTED;
+                }
+            }
+        }
+
+        return SecurityRuleResult.UNKNOWN;
+
+    }
+
+
+}
