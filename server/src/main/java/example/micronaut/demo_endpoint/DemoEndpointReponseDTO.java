@@ -1,4 +1,4 @@
-package example.micronaut.DemoEndpoint;
+package example.micronaut.demo_endpoint;
 
 import io.micronaut.core.annotation.Introspected;
 

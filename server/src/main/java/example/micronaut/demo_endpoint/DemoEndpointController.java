@@ -1,12 +1,11 @@
-package example.micronaut.DemoEndpoint;
+package example.micronaut.demo_endpoint;
 
 import example.micronaut.security.RequiredPermission;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
-import io.micronaut.security.annotation.Secured;
 
-@Secured("isAuthenticated()")
+
 @Controller("/example")
 public class DemoEndpointController {
 

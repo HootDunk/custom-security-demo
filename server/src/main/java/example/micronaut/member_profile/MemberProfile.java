@@ -40,7 +40,7 @@ public class MemberProfile {
     @JsonIgnore
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany
     @JoinTable(
             name= "member_roles",
             joinColumns = {@JoinColumn(name = "member_id", referencedColumnName = "id")},
