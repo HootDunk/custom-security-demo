@@ -2,16 +2,16 @@
 
 ![Screenshot from 2021-08-05 12-02-29](https://user-images.githubusercontent.com/58009556/128391454-5539af57-add1-451c-b8e3-d6aeb76c1f25.png)
 
-To run the App:
+## To run the App:
 1) From the root directory, start the database container with: docker-compose up
 2) Open another terminal and cd into server.  Type ./run.sh to start the app. 
 
 
-
+## Resources
 This resource was very helpful and demonstrates a similar approach -> https://blog.wick.technology/micronaut-security-rule/
 I also recommend the JWT security section of the Micronaut docs as they explain some of the boilerplate code needed to get set up. 
 
-
+## Testing out the app
 Use the demo_endpoint to test out the @Required_Permission annotation
 Use the Controllers in the memberProfile, role, and security packages to explore the test data and get a sense of who has what is returned when using the joinTable annoation. 
 
@@ -76,12 +76,7 @@ Jesse ->
 ]
 
 
-Todo
-- Change the permission annoation to use value member variable and create and use a permissions Enum instead of any string
-- Investigate the use of a database ENUM for permission instead of table
-
-
-
+## Brief summary of authentication and authorization
 The basic flow for Authentication
 1) A user sends a Post request to sign in to the application (localhost:8080/login).
 2) The authenticate method within UserPasswordAuthProvider is called where the users records are checked in the database.  An AuthenticationResponse is provided which includeds the ExtendedUserDetails.  Why ExtendedUserDetails instead of the default Micronaut UserDetails class?  We need to include a List of the Users permissions as part of the UserDetails.
@@ -95,6 +90,8 @@ If the route doesn't have the RequiredPermission annotation or the user doesn't 
 
 
 
-
+## Todo
+- Change the permission annoation to use value member variable and create and use a permissions Enum instead of any string
+- Investigate the use of a database ENUM for permission instead of table
 
 
