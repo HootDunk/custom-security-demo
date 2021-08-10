@@ -22,7 +22,6 @@ public class MemberProfileContoller {
         this.memberProfileRepository = memberProfileRepository;
     }
 
-    @RequiredPermission(permission = "Can View Organization Members")
     @Get
     public HttpResponse<List<MemberProfile>> getAll() {
         return HttpResponse.ok(memberProfileRepository.findAll());

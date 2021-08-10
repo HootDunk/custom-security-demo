@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Singleton
-public class PermissionSecurityRole implements SecurityRule {
+public class PermissionSecurityRule implements SecurityRule {
 
     public static final Integer ORDER = SecuredAnnotationRule.ORDER - 100;
 
@@ -31,9 +31,9 @@ public class PermissionSecurityRole implements SecurityRule {
             MethodBasedRouteMatch methodBasedRouteMatch = (MethodBasedRouteMatch) routeMatch;
             if (methodBasedRouteMatch.hasAnnotation(RequiredPermission.class)) {
                 AnnotationValue<RequiredPermission> requiredPermissionAnnotation = methodBasedRouteMatch.getAnnotation(RequiredPermission.class);
-                Optional<String> optionalPermission = requiredPermissionAnnotation.stringValue("permission");
+                Optional<String> optionalPermission = requiredPermissionAnnotation.stringValue("value");
                 if (optionalPermission.isPresent() && claims != null){
-                    String requiredPermission = requiredPermissionAnnotation.stringValue("permission").get();
+                    String requiredPermission = requiredPermissionAnnotation.stringValue("value").get();
                     System.out.println("required permission -> " + requiredPermission);
                     String userPermissions = claims.get("permissions").toString();
                     System.out.println("userPermissions = " + userPermissions);

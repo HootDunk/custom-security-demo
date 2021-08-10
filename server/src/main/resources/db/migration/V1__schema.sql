@@ -108,22 +108,22 @@ CREATE TABLE permissions(
 insert into permissions
     (id, permission)
 values
-    ('0f299d11-df47-406f-a426-8e3160eaeb21', 'Can View Organization Members');
+    ('0f299d11-df47-406f-a426-8e3160eaeb21', 'CAN_VIEW_ORGANIZATION_MEMBERS');
 insert into permissions
     (id, permission)
 values
-    ('439ad8a8-500f-4f3f-963b-a86437d5820a', 'Can Create/Delete Organization Members');
+    ('439ad8a8-500f-4f3f-963b-a86437d5820a', 'CAN_CREATE_AND_DELETE_ORGANIZATION_MEMBERS');
 
 
 insert into permissions
     (id, permission)
 values
-    ('c7b4d5e0-09ba-479a-8c40-ca9bbd8f217a', 'Can Edit Team Membership');
+    ('c7b4d5e0-09ba-479a-8c40-ca9bbd8f217a', 'CAN_EDIT_TEAM_MEMBERSHIP');
 
 insert into permissions
     (id, permission)
 values
-    ('20bf1ddb-53a0-436e-99dc-802c1199e282', 'Can View PDL Data');
+    ('20bf1ddb-53a0-436e-99dc-802c1199e282', 'CAN_VIEW_PDL_DATA');
 
 
 drop table if exists role_permissions;
