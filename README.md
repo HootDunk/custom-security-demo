@@ -81,7 +81,7 @@ Jesse ->
 ]
 
 
-## Brief summary of authentication and authorization
+## Brief summary of authentication and authorization flow in the app
 ### The basic flow for Authentication
 1) A user sends a Post request to sign in to the application (localhost:8080/login).
 2) The authenticate method within UserPasswordAuthProvider is called where the users records are checked in the database.  An AuthenticationResponse is provided which includeds the ExtendedUserDetails.  Why ExtendedUserDetails instead of the default Micronaut UserDetails class?  We need to include a List of the Users permissions as part of the UserDetails.
