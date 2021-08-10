@@ -18,7 +18,7 @@ I also recommend the JWT security section of the Micronaut docs as they explain 
 
 ## Testing out the app
 Use the demo_endpoint to test out the @Required_Permission annotation
-Use the Controllers in the memberProfile, role, and security packages to explore the test data and get a sense of who has what is returned when using the joinTable annoation. 
+Use the Controllers in the memberProfile, role, and permission packages to explore the test data and get familiar with the test data. 
 
 
 Here are the permissions of each person in the test data:
