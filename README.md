@@ -1,5 +1,10 @@
 # custom-security-demo
 
+## About
+A repository to explore permission based authorization rather than role based authorization.  The goal is to create a system of authorization that is more flexible to changing requirements for various users/roles. 
+
+## ERD
+
 ![Screenshot from 2021-08-05 12-02-29](https://user-images.githubusercontent.com/58009556/128391454-5539af57-add1-451c-b8e3-d6aeb76c1f25.png)
 
 ## To run the App:
@@ -77,14 +82,14 @@ Jesse ->
 
 
 ## Brief summary of authentication and authorization
-The basic flow for Authentication
+### The basic flow for Authentication
 1) A user sends a Post request to sign in to the application (localhost:8080/login).
 2) The authenticate method within UserPasswordAuthProvider is called where the users records are checked in the database.  An AuthenticationResponse is provided which includeds the ExtendedUserDetails.  Why ExtendedUserDetails instead of the default Micronaut UserDetails class?  We need to include a List of the Users permissions as part of the UserDetails.
 3) A Custom JWT claim is created from the populateWithUserDetails method within the CustomJWTClaimsSetGenerator.  The users permissions are included as part of this claim which we are able to get from our ExtendedUserDetails that were created in the prior method.
 4)  The user gets the successful login response which included the JWT. 
 
 
-Basic flow for Authorization
+### Basic flow for Authorization
 All requests are filtered by the check method in the PermissionSecurityRule class.  It checks to see if the route has our custom RequiredPermission annotation.  If it does, then it checks the users claims (these claims come from the JWT which we made sure includes all of the users permissions).  If the permission written in the RequiredPermission is included in the list of permissions from the claim, then they are allowed to access the endpoint. 
 If the route doesn't have the RequiredPermission annotation or the user doesn't have claims then unknown SecurityResult is returned which allows the request to be checked elsewhere (ex: if a route is annoted with the @Secured(SecurityRule.IS_ANONYMOUS) annotation we want it to pass through the check method inside of PermissionSecurityRule). 
 
