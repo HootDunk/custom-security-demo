@@ -1,7 +1,7 @@
 # custom-security-demo
 
 ## About
-A repository to explore permission based authorization rather than role based authorization.  The goal is to create a system of authorization that is more flexible to changing requirements for various users/roles. 
+A repository to explore permission based authorization rather than role based authorization using the Micronaut framework.  The goal is to create a system of authorization that is more flexible to changing requirements for various users/roles. 
 
 ## ERD
 
