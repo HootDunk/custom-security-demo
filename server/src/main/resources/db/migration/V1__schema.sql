@@ -105,7 +105,7 @@ CREATE TYPE valid_permissions AS ENUM ('CAN_VIEW_PDL_DATA', 'CAN_EDIT_TEAM_MEMBE
 drop table if exists role_permissions;
 CREATE TABLE role_permissions(
     role_id varchar references roles(id),
-    permission_id valid_permissions;
+    permission_id VALID_PERMISSIONS,
     primary key(role_id, permission_id)
 );
 

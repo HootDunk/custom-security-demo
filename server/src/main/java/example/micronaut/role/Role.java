@@ -1,15 +1,18 @@
 package example.micronaut.role;
 
-import example.micronaut.permission.Permission;
-import io.micronaut.data.annotation.AutoPopulated;
-import io.micronaut.data.annotation.MappedEntity;
-import io.micronaut.data.annotation.TypeDef;
+import example.micronaut.role_permissions.RolePermission;
+import io.micronaut.data.annotation.*;
+import io.micronaut.data.annotation.Id;
+import io.micronaut.data.jdbc.annotation.JoinColumn;
+import io.micronaut.data.jdbc.annotation.JoinColumns;
 import io.micronaut.data.model.DataType;
 
+//import javax.persistence.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.UUID;
+
 
 @MappedEntity
 @Table(name = "roles")
@@ -28,13 +31,10 @@ public class Role {
     @Column(name = "description")
     private String description;
 
-    @OneToMany
-    @JoinTable(
-            name = "role_permissions",
-            joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "permission_id", referencedColumnName = "id")}
-    )
-    private List<Permission> permissions;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "roles")
+    @JoinColumn(name="role_id")
+    List<RolePermission> permissions;
+
 
     public UUID getId() {
         return id;
@@ -60,11 +60,11 @@ public class Role {
         this.description = description;
     }
 
-    public List<Permission> getPermissions() {
+    public List<RolePermission> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(List<Permission> permissions) {
+    public void setPermissions(List<RolePermission> permissions) {
         this.permissions = permissions;
     }
 }
