@@ -99,74 +99,52 @@ values
     ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f','7a6a2d4e-e435-4ec9-94d8-f1ed7c779498');
 
 
-drop table if exists permissions;
-CREATE TABLE permissions(
-    id varchar primary key,
-    permission varchar
-);
 
-insert into permissions
-    (id, permission)
-values
-    ('0f299d11-df47-406f-a426-8e3160eaeb21', 'CAN_VIEW_ORGANIZATION_MEMBERS');
-insert into permissions
-    (id, permission)
-values
-    ('439ad8a8-500f-4f3f-963b-a86437d5820a', 'CAN_CREATE_AND_DELETE_ORGANIZATION_MEMBERS');
-
-
-insert into permissions
-    (id, permission)
-values
-    ('c7b4d5e0-09ba-479a-8c40-ca9bbd8f217a', 'CAN_EDIT_TEAM_MEMBERSHIP');
-
-insert into permissions
-    (id, permission)
-values
-    ('20bf1ddb-53a0-436e-99dc-802c1199e282', 'CAN_VIEW_PDL_DATA');
-
+CREATE TYPE valid_permissions AS ENUM ('CAN_VIEW_PDL_DATA', 'CAN_EDIT_TEAM_MEMBERSHIP', 'CAN_CREATE_AND_DELETE_ORGANIZATION_MEMBERS', 'CAN_VIEW_ORGANIZATION_MEMBERS');
 
 drop table if exists role_permissions;
 CREATE TABLE role_permissions(
     role_id varchar references roles(id),
-    permission_id varchar references permissions(id),
+    permission_id valid_permissions;
     primary key(role_id, permission_id)
 );
 
-insert into role_permissions
-    (role_id, permission_id)
-values
-    ('06cd3202-a209-4ae1-a49a-10395fbe3548', '0f299d11-df47-406f-a426-8e3160eaeb21');
-
-insert into role_permissions
-    (role_id, permission_id)
-values
-    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f', '439ad8a8-500f-4f3f-963b-a86437d5820a');
-
-insert into role_permissions
-    (role_id, permission_id)
-values
-    ('ba42d181-3c5b-4ee3-938d-be122c314bee', '20bf1ddb-53a0-436e-99dc-802c1199e282');
-
-insert into role_permissions
-    (role_id, permission_id)
-values
-    ('e5449026-cd9a-4bed-a648-fe3ad9382831', 'c7b4d5e0-09ba-479a-8c40-ca9bbd8f217a');
-
 
 
 insert into role_permissions
     (role_id, permission_id)
 values
-    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f', '20bf1ddb-53a0-436e-99dc-802c1199e282');
+    ('06cd3202-a209-4ae1-a49a-10395fbe3548', 'CAN_VIEW_ORGANIZATION_MEMBERS');
+
 insert into role_permissions
     (role_id, permission_id)
 values
-    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f', 'c7b4d5e0-09ba-479a-8c40-ca9bbd8f217a');
+    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f', 'CAN_CREATE_AND_DELETE_ORGANIZATION_MEMBERS');
+
 insert into role_permissions
     (role_id, permission_id)
 values
-    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f', '0f299d11-df47-406f-a426-8e3160eaeb21');
+    ('ba42d181-3c5b-4ee3-938d-be122c314bee', 'CAN_VIEW_PDL_DATA');
+
+insert into role_permissions
+    (role_id, permission_id)
+values
+    ('e5449026-cd9a-4bed-a648-fe3ad9382831', 'CAN_EDIT_TEAM_MEMBERSHIP');
+
+
+
+insert into role_permissions
+    (role_id, permission_id)
+values
+    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f', 'CAN_VIEW_PDL_DATA');
+insert into role_permissions
+    (role_id, permission_id)
+values
+    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f', 'CAN_EDIT_TEAM_MEMBERSHIP');
+insert into role_permissions
+    (role_id, permission_id)
+values
+    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f', 'CAN_VIEW_ORGANIZATION_MEMBERS');
 
 
 
