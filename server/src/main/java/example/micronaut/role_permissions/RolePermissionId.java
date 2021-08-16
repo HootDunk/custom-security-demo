@@ -1,5 +1,6 @@
 package example.micronaut.role_permissions;
 
+import example.micronaut.role.Role;
 import io.micronaut.data.annotation.Embeddable;
 
 import javax.persistence.Column;
@@ -9,16 +10,16 @@ import java.util.UUID;
 @Embeddable
 public class RolePermissionId {
     @Column(name = "role_id")
-    private final UUID roleId;
+    private final Role roleId;
     @Column(name = "permission_id")
     private final String permissionId;
 
-    public RolePermissionId(UUID roleId, String permissionId) {
+    public RolePermissionId(Role roleId, String permissionId) {
         this.roleId = roleId;
         this.permissionId = permissionId;
     }
 
-    public UUID getRoleId() {
+    public Role getRoleId() {
         return roleId;
     }
 

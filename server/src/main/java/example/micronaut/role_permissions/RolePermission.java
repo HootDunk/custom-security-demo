@@ -1,25 +1,29 @@
 package example.micronaut.role_permissions;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import example.micronaut.role.Role;
 import io.micronaut.data.annotation.MappedEntity;
+import io.micronaut.data.jdbc.annotation.JoinColumn;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-@MappedEntity
+@MappedEntity(value = "role_permissions", alias = "role_permissions")
 @Table(name = "role_permissions")
 public class RolePermission {
 
+    @Column(name = "id")
     @EmbeddedId
     private RolePermissionId rolePermissionId;
 
-    @Column(name = "role_id")
-    private UUID roleId;
+    @ManyToOne
+    private Role roleId;
 
     @Column(name = "permission_id")
     private String permissionId;
 
-    public RolePermission(RolePermissionId rolePermissionId, UUID roleId, String permissionId) {
+    public RolePermission(RolePermissionId rolePermissionId, Role roleId, String permissionId) {
         this.rolePermissionId = rolePermissionId;
         this.roleId = roleId;
         this.permissionId = permissionId;
@@ -29,7 +33,7 @@ public class RolePermission {
         return rolePermissionId;
     }
 
-    public UUID getRoleId() {
+    public Role getRoleId() {
         return roleId;
     }
 
@@ -51,3 +55,11 @@ public class RolePermission {
 // https://stackoverflow.com/questions/11938253/jpa-joincolumn-vs-mappedby
 
 // https://stackoverflow.com/questions/47657075/jpa-unidirectional-one-to-many-relationship-with-composite-semi-shared-primary
+
+
+// https://stackoverflow.com/questions/31600142/how-to-define-onetomany-in-parent-entity-when-child-has-composite-pk?rq=1
+// https://stackoverflow.com/questions/11938253/jpa-joincolumn-vs-mappedby
+
+
+// seems to be the best resource
+// https://vladmihalcea.com/the-best-way-to-map-a-onetomany-association-with-jpa-and-hibernate/

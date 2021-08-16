@@ -149,3 +149,30 @@ values
 
 
 
+drop table if exists role_permissions;
+CREATE TABLE role_permissions(
+    role_id varchar references roles(id),
+    permission_id VALID_PERMISSIONS,
+    primary key(role_id, permission_id)
+);
+
+
+
+--CREATE TYPE child_names AS ENUM ('Matt', 'Jake', 'Sarah', 'Hannah');
+--
+--drop table if exists parent;
+--CREATE TABLE parent(
+--    id varchar PRIMARY KEY,
+--    name varchar
+--);
+--
+--
+--
+--drop table if exists child;
+--CREATE TABLE children(
+--    id varchar PRIMARY KEY,
+--    child_permission VALID_PERMISSIONS,
+--);
+
+
+

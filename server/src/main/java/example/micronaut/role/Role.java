@@ -18,6 +18,7 @@ import java.util.UUID;
 @Table(name = "roles")
 public class Role {
 
+
     @Id
     @Column(name="id")
     @AutoPopulated
@@ -32,9 +33,15 @@ public class Role {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name="role_id", referencedColumnName = "id") // tells JPA what column on the role_permission table maps to the Role.
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JoinColumn(name="role_id", referencedColumnName = "id") // tells JPA what column on the role_permission table maps to the Role.
+
+    @OneToMany(mappedBy = "roleId")
     List<RolePermission> permissions;
+//    List<RolePermission> permissions = entityManager.createQuery(
+//            "select rp from RolePermission rp where rp.roleId.id = roleId", RolePermission.class)
+//    .setParameter("roleId", this.id)
+//    .getResultList();
 
 
     public UUID getId() {

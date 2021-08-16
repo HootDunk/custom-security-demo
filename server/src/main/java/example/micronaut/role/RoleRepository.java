@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @JdbcRepository(dialect = Dialect.POSTGRES)
-@Join(value = "role_permissions", type = Join.Type.FETCH)
+//@Join(value = "role_permissions", type = Join.Type.FETCH)
 public interface RoleRepository extends CrudRepository<Role, UUID> {
 //    @Query("SELECT * FROM roles " +
 //            "JOIN role_permissions " +
