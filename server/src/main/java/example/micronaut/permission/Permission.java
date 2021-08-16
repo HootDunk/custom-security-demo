@@ -18,13 +18,13 @@ import java.util.UUID;
 @Table(name = "permissions")
 public class Permission {
     @Id
-    @Column(name="id")
+    @Column(name="role_id")
     @AutoPopulated
     @TypeDef(type= DataType.STRING)
     private UUID id;
 
     @NotBlank
-    @Column(name = "permission")
+    @Column(name = "permission_id")
     private String permission;
 
     public UUID getId() {

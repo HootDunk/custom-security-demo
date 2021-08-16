@@ -12,31 +12,31 @@ import java.util.UUID;
 @Introspected
 public class PermissionDTO {
     @NotBlank
-    private UUID id;
+    private UUID role_id;
     @NotBlank
-    private String permission;
+    private String permission_id;
 
     public UUID getId() {
-        return id;
+        return role_id;
     }
 
     public void setId(UUID id) {
-        this.id = id;
+        this.role_id = id;
     }
 
     public String getPermission() {
-        return permission;
+        return permission_id;
     }
 
     public void setPermission(String permission) {
-        this.permission = permission;
+        this.permission_id = permission;
     }
 
     @Override
     public String toString() {
         return "PermissionDTO{" +
-                "id=" + id +
-                ", permission='" + permission + '\'' +
+                "role_id=" + role_id +
+                ", permission_id='" + permission_id + '\'' +
                 '}';
     }
 }

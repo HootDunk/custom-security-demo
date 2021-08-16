@@ -11,7 +11,7 @@ import io.micronaut.security.rules.SecurityRule;
 import java.util.List;
 import java.util.UUID;
 
-@Secured("isAuthenticated()")
+@Secured(SecurityRule.IS_ANONYMOUS)
 @Controller("/permissions")
 public class PermissionController {
 

@@ -2,21 +2,22 @@ package example.micronaut.role;
 
 import example.micronaut.role_permissions.RolePermission;
 import io.micronaut.data.annotation.*;
-import io.micronaut.data.annotation.Id;
 import io.micronaut.data.jdbc.annotation.JoinColumn;
 import io.micronaut.data.jdbc.annotation.JoinColumns;
 import io.micronaut.data.model.DataType;
 
 //import javax.persistence.*;
 import javax.persistence.*;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 import java.util.UUID;
 
 
-@MappedEntity
+@Entity
 @Table(name = "roles")
 public class Role {
+
     @Id
     @Column(name="id")
     @AutoPopulated
@@ -31,8 +32,8 @@ public class Role {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "roles")
-    @JoinColumn(name="role_id")
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name="role_id", referencedColumnName = "id") // tells JPA what column on the role_permission table maps to the Role.
     List<RolePermission> permissions;
 
 
