@@ -34,10 +34,10 @@ public class PermissionSecurityRule implements SecurityRule {
                 Optional<String> optionalPermission = requiredPermissionAnnotation.stringValue("value");
                 if (optionalPermission.isPresent() && claims != null){
                     String requiredPermission = requiredPermissionAnnotation.stringValue("value").get();
-                    System.out.println("required permission -> " + requiredPermission);
+//                    System.out.println("required permission -> " + requiredPermission);
                     String userPermissions = claims.get("permissions").toString();
-                    System.out.println("userPermissions = " + userPermissions);
-                    System.out.println("user can access resource = " + userPermissions.contains(requiredPermission));
+//                    System.out.println("userPermissions = " + userPermissions);
+//                    System.out.println("user can access resource = " + userPermissions.contains(requiredPermission));
                     if (userPermissions.contains(requiredPermission)){
                         return SecurityRuleResult.ALLOWED;
                     }

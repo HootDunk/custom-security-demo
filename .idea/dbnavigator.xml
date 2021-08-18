@@ -24,55 +24,22 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes />
+    <loaded-nodes>
+      <connection connection-id="2a81344b-7401-40a8-8582-6ca1d96ded9c">
+        <schema name="public" object-types="table, view, sequence, function, constraint, index, column, dataset trigger" />
+      </connection>
+    </loaded-nodes>
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="c1b4f551-246a-480d-b994-78fb1e326529">
-      <console name="Connection" type="STANDARD" schema="public" session="Main"><![CDATA[SELECT member_profile.first_name, member_profile.last_name, roles.role, roles.description
-FROM member_profile
-JOIN member_roles
-    ON member_profile.id = member_roles.member_id
-JOIN roles
-    ON roles.id = member_roles.role_id;
-    
-   
-    
-SELECT roles.role, permissions.permission
-FROM roles
-JOIN role_permissions
-    ON roles.id = role_permissions.role_id
-JOIN permissions
-    ON permissions.id = role_permissions.permission_id;
-    
-    
-    
-    
-SELECT DISTINCT member_profile.first_name, permissions.id, permissions.permission
-FROM member_profile
-JOIN member_roles
-    ON member_profile.id = member_roles.member_id
-JOIN roles
-    ON roles.id = member_roles.role_id
-JOIN role_permissions
-    ON roles.id = role_permissions.role_id
-JOIN permissions
-    ON permissions.id = role_permissions.permission_id
-WHERE member_profile.id = '7a6a2d4e-e435-4ec9-94d8-f1ed7c779498';
-
-
-SELECT * from member_profile;]]></console>
+    <connection id="2a81344b-7401-40a8-8582-6ca1d96ded9c">
+      <console name="Connection" type="STANDARD" schema="information_schema" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="c1b4f551-246a-480d-b994-78fb1e326529" />
-  </component>
-  <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="c1b4f551-246a-480d-b994-78fb1e326529" dataset="public.permissions" active-filter-id="" />
-    <filter-actions connection-id="c1b4f551-246a-480d-b994-78fb1e326529" dataset="public.member_roles" active-filter-id="" />
-    <filter-actions connection-id="c1b4f551-246a-480d-b994-78fb1e326529" dataset="public.roles" active-filter-id="" />
+    <connection id="2a81344b-7401-40a8-8582-6ca1d96ded9c" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -100,7 +67,7 @@ SELECT * from member_profile;]]></console>
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="c1b4f551-246a-480d-b994-78fb1e326529" active="true">
+      <connection id="2a81344b-7401-40a8-8582-6ca1d96ded9c" active="true">
         <database>
           <name value="Connection" />
           <description value="" />
