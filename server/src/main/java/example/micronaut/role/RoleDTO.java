@@ -24,7 +24,6 @@ public class RoleDTO {
 
     private Set<Permission> permission;
 
-    private Set<UUID> memberIds;
 
     public UUID getId() {
         return id;
@@ -58,11 +57,5 @@ public class RoleDTO {
         this.permission = permission;
     }
 
-    public Set<UUID> getMemberIds() {
-        return memberIds;
-    }
 
-    public void setMemberIds(Set<UUID> memberIds) {
-        this.memberIds = memberIds;
-    }
 }
