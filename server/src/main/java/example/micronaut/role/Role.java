@@ -38,18 +38,6 @@ public class Role {
     private List<Permission> permissions;
 
 
-
-    @Column(name = "member_id")
-    private List<UUID> memberProfiles;
-
-    public List<UUID> getMemberProfiles() {
-        return memberProfiles;
-    }
-
-    public void setMemberProfiles(List<UUID> memberProfiles) {
-        this.memberProfiles = memberProfiles;
-    }
-
     public UUID getId() {
         return id;
     }
