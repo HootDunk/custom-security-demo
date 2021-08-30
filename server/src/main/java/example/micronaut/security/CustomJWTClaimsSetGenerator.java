@@ -18,6 +18,7 @@ import io.micronaut.security.token.jwt.generator.claims.JWTClaimsSetGenerator;
 import io.micronaut.security.token.jwt.generator.claims.JwtIdGenerator;
 
 import javax.inject.Singleton;
+import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,23 +39,7 @@ public class CustomJWTClaimsSetGenerator extends JWTClaimsSetGenerator {
         super.populateWithUserDetails(builder, userDetails);
         if (userDetails instanceof ExtendedUserDetails) {
             ExtendedUserDetails extended = (ExtendedUserDetails) userDetails;
-            List<PermissionDTO> permissions = extended.getPermissions();
-
-            // had to manually do the json serialization for some reason
-            try {
-                String json = new ObjectMapper().writeValueAsString(permissions);
-
-                System.out.println(json);
-                builder.claim("permissions", json);
-            } catch (JsonProcessingException e) {
-                e.printStackTrace();
-            }
-            // TODO figure out why id isn't included in each permission of the JWT (list of permissions does map to JSON entity?)
-//            builder.claim("permissions", ((ExtendedUserDetails)userDetails).getPermissions());
-//            System.out.println(builder.getClaims().get("permissions").toString());
-
+            builder.claim("permissions", extended.getPermissions());
         }
     }
 }
-// can change default names of jwt claims (username could be email and roles could be permissions)
-// https://micronaut-projects.github.io/micronaut-security/latest/guide/#jwt

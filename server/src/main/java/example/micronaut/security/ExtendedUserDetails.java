@@ -10,23 +10,23 @@ import java.util.List;
 
 public class ExtendedUserDetails extends UserDetails {
 
-    private List<PermissionDTO> permissions;
+    private Collection<String> permissions;
 
     public ExtendedUserDetails(String username, Collection<String> roles) {
         super(username, roles);
     }
 
-    public ExtendedUserDetails(String username, Collection<String> roles, List<PermissionDTO> permissions) {
+    public ExtendedUserDetails(String username, Collection<String> roles, Collection<String> permissions) {
         super(username, roles);
         this.permissions = permissions;
     }
 
 
-    public List<PermissionDTO> getPermissions() {
+    public Collection<String> getPermissions() {
         return permissions;
     }
 
-    public void setPermissions(List<PermissionDTO> permissions) {
+    public void setPermissions(Collection<String> permissions) {
         this.permissions = permissions;
     }
 }

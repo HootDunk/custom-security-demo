@@ -40,14 +40,13 @@ public class MemberProfile {
     @JsonIgnore
     private String password;
 
-    @OneToMany
+    @ManyToMany
     @JoinTable(
             name= "member_roles",
             joinColumns = {@JoinColumn(name = "member_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")}
     )
     private List<Role> roles;
-
 
     public List<Role> getRoles() {
         return roles;

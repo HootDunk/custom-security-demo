@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Singleton
 public class UserPasswordAuthProvider implements AuthenticationProvider {
@@ -40,9 +41,11 @@ public class UserPasswordAuthProvider implements AuthenticationProvider {
             throw new NotFoundException(("Password does not match"));
         }
 
-        List<PermissionDTO> permissions = permissionRepository.findUserPermissionsDTO(memberProfile.getId());
+        List<Permission> permissions = permissionRepository.findUserPermissions(memberProfile.getId());
+        List<String> permissionNames = new ArrayList<>();
+        permissions.forEach(o -> permissionNames.add(o.getPermission()));
         String email = authReq.getIdentity().toString();
-        return Flowable.just(new ExtendedUserDetails(email, new ArrayList<>(), permissions));
+        return Flowable.just(new ExtendedUserDetails(email, new ArrayList<>(), permissionNames));
 
 
 

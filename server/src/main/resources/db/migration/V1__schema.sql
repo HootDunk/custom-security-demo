@@ -27,6 +27,11 @@ insert into member_profile
 values
     ('7a6a2d4e-e435-4ec9-94d8-f1ed7c779498','Jesse', 'Hanner', 'hannerj@objectcomputing.com', '1234');
 
+insert into member_profile
+    (id, first_name, last_name, work_email, password)
+values
+    ('22f7a91e-44c2-4a9a-8020-26e8c6ec5ef0','Jon', 'Doe', 'jd@objectcomputing.com', '1234');
+
 drop table if exists roles;
 CREATE TABLE roles(
     id varchar primary key,
@@ -98,6 +103,11 @@ insert into member_roles
 values
     ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f','7a6a2d4e-e435-4ec9-94d8-f1ed7c779498');
 
+
+insert into member_roles
+    (role_id, member_id)
+values
+    ('cda41eed-70ea-4d3f-a9d7-cd0c5158eb5f','22f7a91e-44c2-4a9a-8020-26e8c6ec5ef0');
 
 drop table if exists permissions;
 CREATE TABLE permissions(

@@ -1,5 +1,6 @@
 package example.micronaut.role;
 
+import example.micronaut.member_profile.MemberProfile;
 import example.micronaut.permission.Permission;
 import io.micronaut.data.annotation.AutoPopulated;
 import io.micronaut.data.annotation.MappedEntity;
@@ -35,6 +36,19 @@ public class Role {
             inverseJoinColumns = {@JoinColumn(name = "permission_id", referencedColumnName = "id")}
     )
     private List<Permission> permissions;
+
+
+
+    @Column(name = "member_id")
+    private List<UUID> memberProfiles;
+
+    public List<UUID> getMemberProfiles() {
+        return memberProfiles;
+    }
+
+    public void setMemberProfiles(List<UUID> memberProfiles) {
+        this.memberProfiles = memberProfiles;
+    }
 
     public UUID getId() {
         return id;
